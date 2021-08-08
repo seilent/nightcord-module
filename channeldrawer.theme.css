@@ -11,14 +11,6 @@
     z-index: 30; 
 }
 
-[class*="wrapper-"][class*="guilds-"][aria-label]::before {
-    position: fixed;
-    width: 180px;
-    height: 48px;
-    background-color: white;
-    z-index: 30; 
-}
-
 /* Channel List */
 [class*="base-"] > [class*="content-"] > [class*="sidebar-"] {
     position: fixed;
@@ -41,13 +33,13 @@
     left: 72px;
 }
 
-.bd-minimal [class*="wrapper-"][class*="guilds-"][aria-label]:hover + [class*="base-"] [class*="sidebar-"],
+.bd-minimal [class*="wrapper-"][class*="guilds-"][aria-label]::before:hover + [class*="base-"] [class*="sidebar-"],
 .bd-minimal [class*="base-"] [class*="sidebar-"]:hover {
     left: 55px;
 }
 
 /* Hover to serverlist and sidebar to hide pill*/
-[class*="wrapper-"][class*="guilds-"][aria-label]:hover + [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="modeUnread-"]::after,
+[class*="wrapper-"][class*="guilds-"][aria-label]::before:hover + [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="modeUnread-"]::after,
 [class*="base-"] > [class*="content-"] > [class*="sidebar-"]:hover [class*="containerDefault-"] > [class*="modeUnread-"]::after {
     width: 0;
     height: 0;
