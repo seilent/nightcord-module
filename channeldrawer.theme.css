@@ -12,7 +12,7 @@
 }
 
 /* Channel List */
-[class*="base-"] > [class*="content-"] > [class*="sidebar-"] {
+[class*="base-"] [class*="sidebar-"] {
     position: fixed;
     z-index: 20;
     top: 22px;
@@ -20,55 +20,56 @@
     left: -240px;
     border-radius: 0;
     box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.5);
-    transition: left 0.2s;
+    transition: left 200ms;
+    transition-delay: 150ms;
 }
 
-.bd-minimal [class*="base-"] > [class*="content-"] > [class*="sidebar-"] {
+.bd-minimal [class*="base-"] [class*="sidebar-"] {
     left: -200px;
 }
 
-/* Hover to serverlist and sidebar */
-[class*="wrapper-"][class*="guilds-"][aria-label]:hover + [class*="base-"] [class*="sidebar-"],
+
+/* Hover to channelname and sidebar */
 [class*="base-"] [class*="sidebar-"]:hover {
     left: 72px;
 }
 
-.bd-minimal [class*="wrapper-"][class*="guilds-"][aria-label]::before:hover + [class*="base-"] [class*="sidebar-"],
 .bd-minimal [class*="base-"] [class*="sidebar-"]:hover {
     left: 55px;
 }
 
-/* Hover to serverlist and sidebar to hide pill*/
-[class*="wrapper-"][class*="guilds-"][aria-label]::before:hover + [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="modeUnread-"]::after,
-[class*="base-"] > [class*="content-"] > [class*="sidebar-"]:hover [class*="containerDefault-"] > [class*="modeUnread-"]::after {
-    width: 0;
-    height: 0;
+
+/* Hover to channelname and sidebar to hide pill*/
+[class*="base-"] [class*="sidebar-"]:hover [class*="modeUnread-"]::after {
+    transform: scale(0);
+    transition: transform 100ms;
 }
 
 /* Titlebar */
-[class*="wrapper-"][class*="guilds-"][aria-label] + [class*="base-"] [class*="chat-"] > [class*="title-"] {
+[class*="base-"] [class*="title-"] {
     z-index: 10;
 }
 
 /* Add mask for titlebar */
-[class*="wrapper-"][class*="guilds-"][aria-label]::before {
+[class*="base-"] [class*="sidebar-"]::before {
     content: "";
     position: fixed;
     left: 72px;
     top: 22px;
-    width: 130px;
+    width: 240px;
     height: 48px;
     z-index: 30; 
 }
 
-.bd-minimal [class*="wrapper-"][class*="guilds-"][aria-label]::before {
+.bd-minimal [class*="base-"] [class*="sidebar-"]::before {
     left: 55px;
+    width: 200px;
     height: 40px;
 }
 
 
 /* Unread Channel Pill */
-[class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] > [class*="modeUnread-"]::after {
+[class*="base-"] [class*="sidebar-"] [class*="modeUnread-"]::after {
     content: ""; 
     position: fixed;
     border-radius: 0 4px 4px 0;
@@ -77,6 +78,7 @@
     width: 4px;
     height: 8px;
     background-color: var(--interactive-active);
+    transition: transform 100ms ease-out 350ms;
 }
 
 .bd-minimal [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] > [class*="modeUnread-"]::after {
