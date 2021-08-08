@@ -1,0 +1,68 @@
+/**
+ * @name Channel Drawer
+ * @author Seilent
+ * @version 1.0.0
+ * @description Changed the channel into drawer to save horizontal space
+ * @source https://github.com/seilent/nightcord-module
+*/
+
+/* Server List */
+[class*="wrapper-"][class*="guilds-"][aria-label] {
+    z-index: 30; 
+}
+
+/* Channel List */
+[class*="base-"] > [class*="content-"] > [class*="sidebar-"] {
+    position: fixed;
+    z-index: 20;
+    top: 22px;
+    bottom: 0;
+    left: -240px;
+    border-radius: 0;
+    box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.5);
+    transition: left 0.2s;
+}
+
+.bd-minimal [class*="base-"] > [class*="content-"] > [class*="sidebar-"] {
+    left: -200px;
+}
+
+/* Hover to serverlist and sidebar */
+[class*="wrapper-"][class*="guilds-"][aria-label]:hover + [class*="base-"] [class*="sidebar-"],
+[class*="base-"] [class*="sidebar-"]:hover {
+    left: 72px;
+}
+
+.bd-minimal [class*="wrapper-"][class*="guilds-"][aria-label]:hover + [class*="base-"] [class*="sidebar-"],
+.bd-minimal [class*="base-"] [class*="sidebar-"]:hover {
+    left: 55px;
+}
+
+/* Hover to serverlist and sidebar to hide pill*/
+[class*="wrapper-"][class*="guilds-"][aria-label]:hover + [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="unread-"]::before,
+[class*="base-"] > [class*="content-"] > [class*="sidebar-"]:hover [class*="containerDefault-"] [class*="unread-"]::before {
+    width: 0;
+    height: 0;
+}
+
+/* Titlebar */
+[class*="wrapper-"][class*="guilds-"][aria-label] + [class*="base-"] [class*="chat-"] > [class*="title-"] {
+    z-index: 10;
+}
+
+/* Unread Channel Pill */
+[class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="unread-"]::before {
+    content: ""; 
+    position: fixed;
+    border-radius: 0 4px 4px 0;
+    top: 41px;
+    left: 72px;
+    width: 4px;
+    height: 8px;
+    background-color: var(--text-normal);
+}
+
+.bd-minimal [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="unread-"]::before {
+    left: 55px;
+    top: 38px;
+}
