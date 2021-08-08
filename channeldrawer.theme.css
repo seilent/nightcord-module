@@ -11,6 +11,14 @@
     z-index: 30; 
 }
 
+[class*="wrapper-"][class*="guilds-"][aria-label]::before {
+    position: fixed;
+    width: 180px;
+    height: 48px;
+    background-color: white;
+    z-index: 30; 
+}
+
 /* Channel List */
 [class*="base-"] > [class*="content-"] > [class*="sidebar-"] {
     position: fixed;
@@ -49,6 +57,23 @@
 [class*="wrapper-"][class*="guilds-"][aria-label] + [class*="base-"] [class*="chat-"] > [class*="title-"] {
     z-index: 10;
 }
+
+/* Add mask for titlebar */
+[class*="wrapper-"][class*="guilds-"][aria-label]::before {
+    content: "";
+    position: fixed;
+    left: 72px;
+    top: 22px;
+    width: 130px;
+    height: 48px;
+    z-index: 30; 
+}
+
+.bd-minimal [class*="wrapper-"][class*="guilds-"][aria-label]::before {
+    left: 55px;
+    height: 40px;
+}
+
 
 /* Unread Channel Pill */
 [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] > [class*="modeUnread-"]::after {
