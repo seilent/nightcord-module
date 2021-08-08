@@ -71,6 +71,12 @@
     height: 40px;
 }
 
+/* Move the mask and channel down when streamer mode is enabled */
+[class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"],
+[class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"]::before {
+    top: 58px;
+}
+
 
 /* Unread Channel Pill */
 [class*="base-"] [class*="sidebar-"] [class*="modeUnread-"]::after {
