@@ -56,10 +56,10 @@
     position: fixed;
     border-radius: 0 4px 4px 0;
     top: 41px;
-    left: 72px;
+    left: 71px;
     width: 4px;
     height: 8px;
-    background-color: var(--text-normal);
+    background-color: var(--interactive-active);
 }
 
 .bd-minimal [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] > [class*="modeUnread-"]::after {
