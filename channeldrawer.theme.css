@@ -39,8 +39,8 @@
 }
 
 /* Hover to serverlist and sidebar to hide pill*/
-[class*="wrapper-"][class*="guilds-"][aria-label]:hover + [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="unread-"]::before,
-[class*="base-"] > [class*="content-"] > [class*="sidebar-"]:hover [class*="containerDefault-"] [class*="unread-"]::before {
+[class*="wrapper-"][class*="guilds-"][aria-label]:hover + [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="modeUnread-"]::after,
+[class*="base-"] > [class*="content-"] > [class*="sidebar-"]:hover [class*="containerDefault-"] > [class*="modeUnread-"]::after {
     width: 0;
     height: 0;
 }
@@ -51,7 +51,7 @@
 }
 
 /* Unread Channel Pill */
-[class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="unread-"]::before {
+[class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] > [class*="modeUnread-"]::after {
     content: ""; 
     position: fixed;
     border-radius: 0 4px 4px 0;
@@ -62,7 +62,7 @@
     background-color: var(--text-normal);
 }
 
-.bd-minimal [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] [class*="unread-"]::before {
+.bd-minimal [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] > [class*="modeUnread-"]::after {
     left: 55px;
     top: 38px;
 }
