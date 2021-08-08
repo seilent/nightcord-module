@@ -11,6 +11,10 @@
     z-index: 30; 
 }
 
+[class*="sidebar-"] [aria-controls*="popout_"]{
+    z-index: 50;
+}
+
 /* Channel List */
 [class*="base-"] [class*="sidebar-"] {
     position: fixed;
