@@ -59,7 +59,7 @@
 
 [class*="base-"] section[class*="panels-"] > [class*="container-"] {
     height: 73px;
-    background-color: var(--background-primary));
+    background-color: var(--background-primary);
     margin-bottom: -1px;
 }
 
