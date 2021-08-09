@@ -61,7 +61,7 @@
 
 [class*="base-"] section[class*="panels-"] > [class*="container-"] {
     height: 73px !important;
-    background-color: var(--background-primary);
+    background-color: var(--background-secondary);
 }
 
 
@@ -69,7 +69,7 @@
 [class*="base-"] section[class*="panels-"]:hover {
     width: 240px;
     max-height: 200px;
-    background-color: var(--background-primary);
+    background-color: var(--background-secondary);
     box-shadow: 2px -1px 5px -2px rgba(0, 0, 0, 0.5);
     animation-name: userareaout;
     animation-duration: 0.5s;
@@ -90,8 +90,8 @@
 /* user area expand animation */
 @keyframes userareaout{
     0% {width: 0; background-color: var(--background-tertiary); box-shadow: none }
-    50% {width: 0; background-color: var(--background-primary); box-shadow: none }
-    100% {width: 240px; background-color: var(--background-primary)}
+    50% {width: 0; background-color: var(--background-secondary); box-shadow: none }
+    100% {width: 240px; background-color: var(--background-secondary)}
 }
 
 /* Header Color */
