@@ -89,11 +89,11 @@
 
 /* User Popup */
 
-[class*="base-"] [class*="panels-"] button[aria-label] {
+[class*="base-"] [class*="panels-"]  > [class*="container-"] button[aria-label] {
     width: 42px;
 }
 
-[class*="base-"] [class*="panels-"] [class*="flex-"] {
+[class*="base-"] [class*="panels-"] > [class*="container-"] > [class*="flex-"] {
     margin-right: -20px;
 }
 
