@@ -360,3 +360,10 @@
     height: 55px;
     left: 55px;
 }
+
+.bd-minimal [class*="sidebar-"] > [class*="container-"] {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(var(--background-primary),   var(--background-primary)  ), 
+                      linear-gradient(var(--background-secondary), var(--background-secondary));
+    background-size: 100% 40px, 100%;
+}
