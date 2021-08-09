@@ -1,13 +1,13 @@
 /**
  * @name Channel Drawer
  * @author Seilent
- * @version 1.1.5
+ * @version 1.1.6
  * @description Changed the channel into drawer to save horizontal space
  * @source https://github.com/seilent/nightcord-module
 **/
 
-/* 1.1.5
- * Fix unresponsive buttons
+/* 1.1.6
+ * Fix voice panel
  */
 
 /* z-index */
@@ -43,6 +43,13 @@
 
 [class*="base-"] [class*="panels-"] > [class*="container-"] {
     height: 72px;
+    padding: 0 30px;
+}
+
+/* Userarea */
+
+[class*="base-"] [class*="panels-"] [class*="nameTag-"] {
+    width: 100px;
 }
 
 /* Avatarjank */
@@ -95,6 +102,26 @@
     mask: url(#svg-mask-status-offline);
 }
 
+/* Voice Panel */
+[class*="base-"] [class*="panels-"] > [class*="wrapper-"]:not(:empty) {
+    position: fixed;
+    overflow: hidden;
+    width: 240px;
+    height: 0px;
+    bottom: 72;
+    background-color: var(--background-primary);
+}
+
+[class*="base-"] [class*="panels-"] > [class*="wrapper-"]:empty {
+    position: fixed;
+    overflow: hidden;
+    width: 0px;
+    height: 72px;
+    bottom: 0;
+    background-color: var(--background-primary);
+}
+
+
 /* Header Color */
 
 [class*="sidebar-"] > [class*="container-"] {
@@ -143,29 +170,56 @@
 
 /* Hover to user area */
 [class*="base-"] [class*="panels-"]:hover {
-    width: 160px;
+    width: 240px;
     background-color: var(--background-primary);
     box-shadow: 2px -1px 5px -2px rgba(0, 0, 0, 0.5);
     animation-name: userareaout;
-    animation-duration: 0.5s;
+    animation-duration: 0.7s;
 }
 
-/* Instantly expand wrapper to allow mouse to hover early to the icons */
-[class*="base-"] [class*="panels-"] > [class*="wrapper-"] {
-    position: fixed;
-    width: 0px;
-    height: 72px;
-}
-
-[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"] {
+[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:not(:empty) {
     width: 240px;
+    height: 89px;
+    bottom: 72px;
+    background-color: var(--background-primary);
+    box-shadow: 2px -1px 5px -2px rgba(0, 0, 0, 0.5);
+    animation-name: userareaoutvc;
+    animation-duration: 0.8s;
+}
+
+
+/* Userpanel mask */
+/* Instantly expand mask to allow mouse to hover early to the icons */
+
+[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:not(:empty)::before {
+    content:"";
+    position: fixed;
+    width: 240px;
+    height: 162px;
+    left: 72px;
+    bottom: 0;
+}
+
+[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:empty::before {
+    content:"";
+    position: fixed;
+    width: 240px;
+    height: 72px;
+    left: 72px;
+    bottom: 0;
 }
 
 /* user area expand animation */
 @keyframes userareaout{
     0% {width: 0; background-color: var(--background-tertiary); box-shadow: none }
     80% {width: 0; background-color: var(--background-primary); box-shadow: none }
-    100% {width: 160px; background-color: var(--background-primary)}
+    100% {width: 240px; background-color: var(--background-primary)}
+}
+
+@keyframes userareaoutvc{
+    0% {height: 0; background-color: var(--background-tertiary); box-shadow: none }
+    90% {height: 0; background-color: var(--background-primary); box-shadow: none }
+    100% {height: 88px; background-color: var(--background-primary)}
 }
 
 
