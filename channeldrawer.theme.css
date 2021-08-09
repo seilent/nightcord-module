@@ -147,6 +147,13 @@
     animation-duration: 0.5s;
 }
 
+/* user area expand animation */
+@keyframes userareaout{
+    0% {width: 0; background-color: var(--background-tertiary); box-shadow: none }
+    80% {width: 0; background-color: var(--background-primary); box-shadow: none }
+    100% {width: 160px; background-color: var(--background-primary)}
+}
+
 /* Instantly expand wrapper to allow mouse to hover early to the icons */
 [class*="base-"] [class*="panels-"] > [class*="wrapper-"] {
     position: fixed;
@@ -157,14 +164,6 @@
 [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"] {
     width: 240px;
 }
-
-/* user area expand animation */
-@keyframes userareaout{
-    0% {width: 0; background-color: var(--background-tertiary); box-shadow: none }
-    80% {width: 0; background-color: var(--background-primary); box-shadow: none }
-    100% {width: 160px; background-color: var(--background-primary)}
-}
-
 
 /* Hover to channelname and sidebar to hide pill*/
 [class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover [class*="modeUnread-"]::after {
