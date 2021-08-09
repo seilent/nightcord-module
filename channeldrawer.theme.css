@@ -49,29 +49,30 @@
 [class*="base-"] section[class*="panels-"] {
     position: fixed;
     overflow: hidden;
-    width: 0px;
-    height: 72px;
     left: 0;
     bottom: 0;
+    width: 0px;
+    max-height: 200px;
     padding-left: 72px;
+    padding-bottom: 13px;
     background-color: var(--background-tertiary);
+    transition: width .2s, background-color 0.3s;
 }
 
 [class*="base-"] section[class*="panels-"] > [class*="container-"] {
-    height: 73px;
+    height: 73px !important;
     background-color: var(--background-primary);
-    margin-bottom: -1px;
 }
 
 
 /* User Area Hover */
 [class*="base-"] section[class*="panels-"]:hover {
     width: 240px;
-    height: auto;
+    max-height: 200px;
     background-color: var(--background-primary);
     box-shadow: 2px -1px 5px -2px rgba(0, 0, 0, 0.5);
-    animation: userareaout;
-    animation-duration: 600ms;
+    animation-name: userareaout;
+    animation-duration: 0.5s;
 }
 
 /* Userpanel mask */
@@ -92,7 +93,6 @@
     50% {width: 0; background-color: var(--background-primary); box-shadow: none }
     100% {width: 240px; background-color: var(--background-primary)}
 }
-
 
 /* Header Color */
 
