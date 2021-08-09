@@ -1,50 +1,173 @@
 /**
  * @name Channel Drawer
  * @author Seilent
- * @version 1.0.0
+ * @version 1.1.0
  * @description Changed the channel into drawer to save horizontal space
  * @source https://github.com/seilent/nightcord-module
-*/
+**/
 
-/* Server List */
+/* 1.10
+ * Split userarea and sidebar
+ */
+
+/* z-index */
 [class*="wrapper-"][class*="guilds-"][aria-label] {
-    z-index: 30; 
+    z-index: 50; 
+    margin-bottom: 72px;
 }
 
 [class*="sidebar-"] [aria-controls*="popout_"]{
-    z-index: 50;
+    z-index: 60;
 }
 
-/* Channel List */
+[class*="base-"] [class*="sidebar-"] {
+    z-index: 40
+}
+
+[class*="base-"] [class*="panels-"] {
+    position: fixed;
+    overflow: hidden;
+    left: 72px;
+    bottom: 0;
+    width: 0px;
+    height: 72px;
+    margin-left: -72px;
+    padding-left: 72px;
+    background-color: var(--background-tertiary);
+    transition: width 0.1s, background-color 0.5s;
+}
+
+[class*="base-"] [class*="panels-"] > [class*="container-"] {
+    height: 72px;
+}
+
+/* Avatarjank */
+
+[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] {
+    position: fixed;
+    left: 12px;
+    bottom: 12px;    
+    width: 48px;
+    height: 48px;
+}
+
+[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] svg {
+    overflow: visible;
+}
+
+[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject {
+    width: 48px;
+    height: 48px;
+    mask: url(#svg-mask-avatar-status-round-32);
+}
+
+
+[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + rect {    
+    x: 31;
+    y: 31;
+    width: 18px;
+    height: 18px;
+}
+
+[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect {    
+    x: 17px;
+    y: 15px;
+    width: 18px;
+    height: 18px;
+}
+
+[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect[fill*="hsl(139,"] {
+    mask: url(#svg-mask-status-online);
+}
+
+[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect[fill*="hsl(38,"] {
+    mask: url(#svg-mask-status-idle);
+}
+
+[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect[fill*="hsl(359,"] {
+    mask: url(#svg-mask-status-dnd);
+}
+
+[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect[fill*="hsl(214,"] {
+    mask: url(#svg-mask-status-offline);
+}
+
+/* Header Color */
+
+[class*="sidebar-"] > [class*="container-"] {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(var(--background-primary),   var(--background-primary)  ), 
+                      linear-gradient(var(--background-secondary), var(--background-secondary));
+    background-size: 100% 48px, 100%;
+}
+
+/* Throw away sidebar parent */
+
 [class*="base-"] [class*="sidebar-"] {
     position: fixed;
-    z-index: 20;
+}
+
+/* Sidebar's child */
+[class*="base-"] [class*="sidebar-"] > [class*="container-"], 
+[class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]{
+    position: fixed;
+    left: -240px;
     top: 22px;
     bottom: 0;
-    left: -240px;
     border-radius: 0;
     box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.5);
     transition: left 200ms;
     transition-delay: 150ms;
+    width: 240px;
 }
-
-.bd-minimal [class*="base-"] [class*="sidebar-"] {
-    left: -200px;
-}
-
 
 /* Hover to channelname and sidebar */
-[class*="base-"] [class*="sidebar-"]:hover {
+[class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover,
+[class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]:hover {
     left: 72px;
 }
 
-.bd-minimal [class*="base-"] [class*="sidebar-"]:hover {
-    left: 55px;
+/* Instantly expand wrapper to allow mouse to hover early to the channels */
+[class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover::after,
+[class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]:hover::after {
+    content: "";
+    position: fixed;
+    left: 72px;
+    top: 22px;
+    width: 240px;
+    height: 100%;
+}
+
+/* Hover to user area */
+[class*="base-"] [class*="panels-"]:hover {
+    width: 160px;
+    background-color: var(--background-primary);
+    box-shadow: 2px -1px 5px -2px rgba(0, 0, 0, 0.5);
+    animation-name: userareaout;
+    animation-duration: 0.5s;
+}
+
+/* Instantly expand wrapper to allow mouse to hover early to the icons */
+[class*="base-"] [class*="panels-"] > [class*="wrapper-"] {
+    position: fixed;
+    width: 0px;
+    height: 72px;
+}
+
+[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"] {
+    width: 240px;
+}
+
+/* user area expand animation */
+@keyframes userareaout{
+    0% {width: 0; background-color: var(--background-tertiary); box-shadow: none }
+    80% {width: 0; background-color: var(--background-primary); box-shadow: none }
+    100% {width: 160px; background-color: var(--background-primary)}
 }
 
 
 /* Hover to channelname and sidebar to hide pill*/
-[class*="base-"] [class*="sidebar-"]:hover [class*="modeUnread-"]::after {
+[class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover [class*="modeUnread-"]::after {
     transform: scale(0);
     transition: transform 100ms;
 }
@@ -55,50 +178,59 @@
 }
 
 /* Add mask for titlebar */
-[class*="base-"] [class*="sidebar-"]::before {
+[class*="base-"] [class*="sidebar-"] > [class*="container-"]::before,
+[class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]::before {
     content: "";
     position: fixed;
     left: 72px;
     top: 22px;
     width: 240px;
     height: 48px;
-    z-index: 30; 
-}
-
-.bd-minimal [class*="base-"] [class*="sidebar-"]::before {
-    left: 55px;
-    width: 200px;
-    height: 40px;
 }
 
 /* Unread Channel Pill */
 [class*="base-"] [class*="sidebar-"] [class*="modeUnread-"]::after {
     content: ""; 
     position: fixed;
-    border-radius: 0 4px 4px 0;
-    top: 41px;
     left: 71px;
+    top: 41px;
     width: 4px;
     height: 8px;
+    border-radius: 0 4px 4px 0;
     background-color: var(--interactive-active);
     transition: transform 100ms ease-out 350ms;
 }
 
-.bd-minimal [class*="base-"] > [class*="content-"] > [class*="sidebar-"] [class*="containerDefault-"] > [class*="modeUnread-"]::after {
-    left: 55px;
-    top: 38px;
-}
 
 /* Move the mask, pill, and channel down when streamer mode is enabled */
-[class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"],
-[class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"]::before {
+[class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] > [class*="container-"],
+[class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] > [class*="container-"]::before,
+[class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] > [class*="privateChannels-"]::before {
     top: 58px;
 }
 
 [class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] [class*="modeUnread-"]::after {
-    top: 78px !important;
+    top: 78px;
 }
 
-.bd-minimal [class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] [class*="modeUnread-"]::after {
-    top: 74px !important;
+/* COSSMETICS */
+
+/* Darkening Effect When Sidebar Is Open */
+[class*="base-"] [class*="sidebar-"] + [class*="chat-"]::after {
+    content: "";
+    position: fixed;
+    z-index: 10;
+    top: 22px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.4s;
+    transition-delay: 0.2s;
 }
+
+[class*="base-"] [class*="sidebar-"]:hover + [class*="chat-"]::after {
+    left: 72px;
+    animation-duration: 0.4s;
+    background-color: rgba(0, 0, 0, 0.3);
+} 
