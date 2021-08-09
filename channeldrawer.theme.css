@@ -53,7 +53,7 @@
     width: 100px;
 }
 
-/* Avatarjank */
+/* Avatar Size */
 
 [class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] {
     position: fixed;
@@ -63,44 +63,11 @@
     height: 48px;
 }
 
-[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] svg {
-    overflow: visible;
-}
-
-[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject {
-    width: 48px;
-    height: 48px;
-    mask: url(#svg-mask-avatar-status-round-32);
-}
-
-[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + rect {    
-    x: 31;
-    y: 31;
-    width: 18px;
-    height: 18px;
-}
-
-[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect {    
-    x: 17px;
-    y: 15px;
-    width: 18px;
-    height: 18px;
-}
-
-[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect[fill*="hsl(139,"] {
-    mask: url(#svg-mask-status-online);
-}
-
-[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect[fill*="hsl(38,"] {
-    mask: url(#svg-mask-status-idle);
-}
-
-[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect[fill*="hsl(359,"] {
-    mask: url(#svg-mask-status-dnd);
-}
-
-[class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] [class*="avatar-"] foreignObject + svg rect[fill*="hsl(214,"] {
-    mask: url(#svg-mask-status-offline);
+[class*="base-"] [class*="panels-"] [class*="wrapper-"][style*="32px"] {
+    border-radius: 0 !important;
+    width: 48px !important;
+    height: 48px !important;
+    mask: none !important;
 }
 
 /* Voice Panel */
