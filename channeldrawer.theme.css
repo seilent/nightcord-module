@@ -49,15 +49,17 @@
 [class*="base-"] section[class*="panels-"] {
     position: fixed;
     overflow: hidden;
-    width: 0;
-    height: 0;
+    width: 0px;
+    height: 72px;
+    left: 0;
     bottom: 0;
+    padding-left: 72px;
     background-color: var(--background-tertiary);
 }
 
 [class*="base-"] section[class*="panels-"] > [class*="container-"] {
     height: 73px;
-    background-color: var(--background-tertiary);
+    background-color: var(--background-primary));
     margin-bottom: -1px;
 }
 
