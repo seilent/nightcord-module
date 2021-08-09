@@ -1,13 +1,14 @@
 /**
  * @name Channel Drawer
  * @author Seilent
- * @version 1.1.6
+ * @version 1.1.7
  * @description Changed the channel into drawer to save horizontal space
  * @source https://github.com/seilent/nightcord-module
 **/
 
-/* 1.1.6
+/* 1.1.7
  * Fix voice panel
+ * BD minimal support
  */
 
 /* z-index */
@@ -108,7 +109,7 @@
     overflow: hidden;
     width: 240px;
     height: 0px;
-    bottom: 72;
+    bottom: 72px;
     background-color: var(--background-primary);
 }
 
@@ -183,8 +184,8 @@
     bottom: 72px;
     background-color: var(--background-primary);
     box-shadow: 2px -1px 5px -2px rgba(0, 0, 0, 0.5);
-    animation-name: userareaoutvc;
-    animation-duration: 0.8s;
+    transition: height 0.1s;
+    transition-delay: 0.7s;
 }
 
 
@@ -214,12 +215,6 @@
     0% {width: 0; background-color: var(--background-tertiary); box-shadow: none }
     80% {width: 0; background-color: var(--background-primary); box-shadow: none }
     100% {width: 240px; background-color: var(--background-primary)}
-}
-
-@keyframes userareaoutvc{
-    0% {height: 0; background-color: var(--background-tertiary); box-shadow: none }
-    90% {height: 0; background-color: var(--background-primary); box-shadow: none }
-    100% {height: 88px; background-color: var(--background-primary)}
 }
 
 
@@ -387,4 +382,19 @@
 .bd-minimal [class*="base-"] [class*="panels-"] [class*="noWrap-"] {
     opacity: 100;
     pointer-events: all;
+}
+
+.bd-minimal [class*="base-"] [class*="panels-"] > [class*="wrapper-"]:not(:empty) {
+    position: fixed;
+    overflow: hidden;
+    width: 240px;
+    height: 0px;
+    bottom: 55px;
+    background-color: var(--background-primary);
+}
+
+.bd-minimal [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:not(:empty) {
+    height: 89px;
+    transition: height 0.1s;
+    transition-delay: 0.7s;
 }
