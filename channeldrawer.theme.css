@@ -30,7 +30,6 @@
 }
 
 /* Avatar Size */
-
 [class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] {
     position: fixed;
     left: 12px;
@@ -45,7 +44,6 @@
 }
 
 /* User Panel */
-
 [class*="base-"] section[class*="panels-"] {
     position: fixed;
     overflow: hidden;
@@ -64,7 +62,6 @@
     background-color: var(--background-secondary);
 }
 
-
 /* User Area Hover */
 [class*="base-"] section[class*="panels-"]:hover {
     width: 240px;
@@ -76,7 +73,6 @@
 }
 
 /* Userpanel mask */
-
 [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]::before {
     content:"";
     position: fixed;
@@ -86,7 +82,6 @@
     bottom: 0;    
 }
 
-
 /* user area expand animation */
 @keyframes userareaout{
     0% {width: 0; background-color: var(--background-tertiary); box-shadow: none }
@@ -94,8 +89,8 @@
     100% {width: 240px; background-color: var(--background-secondary)}
 }
 
+/* SIDEBAR */
 /* Header Color */
-
 [class*="sidebar-"] > [class*="container-"] {
     background-repeat: no-repeat;
     background-image: linear-gradient(var(--background-primary),   var(--background-primary)  ), 
@@ -104,7 +99,6 @@
 }
 
 /* Throw away sidebar parent */
-
 [class*="base-"] [class*="sidebar-"] {
     position: fixed;
 }
@@ -127,17 +121,6 @@
 [class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover,
 [class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]:hover {
     left: 72px;
-}
-
-/* Instantly expand wrapper to allow mouse to hover early to the channels 
-[class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover::after,
-[class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]:hover::after {
-    content: "";
-    position: fixed;
-    left: 72px;
-    top: 22px;
-    width: 240px;
-    height: 100%;
 }
 
 /* Hover to channelname and sidebar to hide pill*/
