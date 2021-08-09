@@ -69,7 +69,7 @@
 }
 
 /* Voice Panel */
-[class*="base-"] [class*="panels-"] > [class*="wrapper-"]:not(:empty) {
+[class*="base-"] [class*="panels-"] > [class*="wrapper-"] {
     position: fixed;
     overflow: hidden;
     width: 240px;
@@ -152,7 +152,7 @@
     animation-duration: 0.7s;
 }
 
-[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:not(:empty) {
+[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"] {
     width: 240px;
     height: 89px;
     bottom: 72px;
@@ -166,7 +166,7 @@
 /* Userpanel mask */
 /* Instantly expand mask to allow mouse to hover early to the icons */
 
-[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:not(:empty)::before {
+[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]::before {
     content:"";
     position: fixed;
     width: 240px;
@@ -344,7 +344,7 @@
     pointer-events: all;
 }
 
-.bd-minimal [class*="base-"] [class*="panels-"] > [class*="wrapper-"]:not(:empty) {
+.bd-minimal [class*="base-"] [class*="panels-"] > [class*="wrapper-"] {
     bottom: 55;
 }
 
@@ -353,18 +353,24 @@
 }
 
 
-[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:not(:empty) {
+.bd-minimal [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"] {
     height: 89px;
     bottom: 55px;
 }
 
-[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:not(:empty)::before {
+.bd-minimal [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:empty {
+    height: 55px;
+    bottom: 55px;
+}
+
+
+.bd-minimal [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]::before {
     width: 240px;
     height: 162px;
     left: 55px;
 }
 
-[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:empty::before {
+.bd-minimal [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:empty::before {
     width: 240px;
     height: 55px;
     left: 55px;
