@@ -1,14 +1,14 @@
 /**
  * @name Channel Drawer
  * @author Seilent
- * @version 1.1.7
+ * @version 1.1.8
  * @description Changed the channel into drawer to save horizontal space
  * @source https://github.com/seilent/nightcord-module
 **/
 
-/* 1.1.7
- * Fix voice panel
- * BD minimal support
+/* 1.1.8
+ * Make things a bit more simple
+ * Removed /bd-minimal for now
  */
 
 /* z-index */
@@ -29,30 +29,6 @@
     z-index: 60;
 }
 
-[class*="base-"] [class*="panels-"] {
-    position: fixed;
-    overflow: hidden;
-    left: 72px;
-    bottom: 0;
-    width: 0px;
-    height: 72px;
-    margin-left: -72px;
-    padding-left: 72px;
-    background-color: var(--background-tertiary);
-    transition: width 0.1s, background-color 0.5s;
-}
-
-[class*="base-"] [class*="panels-"] > [class*="container-"] {
-    height: 72px;
-    padding: 0 30px;
-}
-
-/* Userarea */
-
-[class*="base-"] [class*="panels-"] [class*="nameTag-"] {
-    width: 100px;
-}
-
 /* Avatar Size */
 
 [class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] {
@@ -68,34 +44,53 @@
     height: 48px !important;
 }
 
-/* Voice Panel */
-[class*="base-"] [class*="panels-"] > [class*="wrapper-"] {
-    position: fixed;
-    overflow: hidden;
-    width: 240px;
-    height: 0px;
-    bottom: 72px;
-    background-color: var(--background-primary);
-}
+/* User Panel */
 
-[class*="base-"] [class*="panels-"] > [class*="wrapper-"]:empty {
+[class*="base-"] section[class*="panels-"] {
     position: fixed;
     overflow: hidden;
-    width: 0px;
-    height: 72px;
+    width: 0;
+    height: 0;
     bottom: 0;
+    background-color: var(--background-tertiary);
+}
+
+[class*="base-"] section[class*="panels-"] > [class*="container-"] {
+    height: 73px;
+    background-color: var(--background-tertiary);
+    margin-bottom: -1px;
+}
+
+
+/* User Area Hover */
+[class*="base-"] section[class*="panels-"]:hover {
+    width: 240px;
+    height: auto;
     background-color: var(--background-primary);
+    box-shadow: 2px -1px 5px -2px rgba(0, 0, 0, 0.5);
+    animation: userareaout;
+    animation-duration: 600ms;
 }
 
-/* User Popup */
+/* Userpanel mask */
 
-[class*="base-"] [class*="panels-"]  > [class*="container-"] button[aria-label] {
-    width: 42px;
+[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]::before {
+    content:"";
+    position: fixed;
+    width: 320px;
+    height: 72px;
+    left: 0px;
+    bottom: 0;    
 }
 
-[class*="base-"] [class*="panels-"] > [class*="container-"] > [class*="flex-"] {
-    margin-right: -20px;
+
+/* user area expand animation */
+@keyframes userareaout{
+    0% {width: 0; background-color: var(--background-tertiary); box-shadow: none }
+    50% {width: 0; background-color: var(--background-primary); box-shadow: none }
+    100% {width: 240px; background-color: var(--background-primary)}
 }
+
 
 /* Header Color */
 
@@ -132,7 +127,7 @@
     left: 72px;
 }
 
-/* Instantly expand wrapper to allow mouse to hover early to the channels */
+/* Instantly expand wrapper to allow mouse to hover early to the channels 
 [class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover::after,
 [class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]:hover::after {
     content: "";
@@ -142,55 +137,6 @@
     width: 240px;
     height: 100%;
 }
-
-/* Hover to user area */
-[class*="base-"] [class*="panels-"]:hover {
-    width: 240px;
-    background-color: var(--background-primary);
-    box-shadow: 2px -1px 5px -2px rgba(0, 0, 0, 0.5);
-    animation-name: userareaout;
-    animation-duration: 0.7s;
-}
-
-[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"] {
-    width: 240px;
-    height: 89px;
-    bottom: 72px;
-    background-color: var(--background-primary);
-    box-shadow: 2px -1px 5px -2px rgba(0, 0, 0, 0.5);
-    transition: height 0.1s;
-    transition-delay: 0.7s;
-}
-
-
-/* Userpanel mask */
-/* Instantly expand mask to allow mouse to hover early to the icons */
-
-[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]::before {
-    content:"";
-    position: fixed;
-    width: 240px;
-    height: 162px;
-    left: 72px;
-    bottom: 0;
-}
-
-[class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:empty::before {
-    content:"";
-    position: fixed;
-    width: 240px;
-    height: 72px;
-    left: 72px;
-    bottom: 0;
-}
-
-/* user area expand animation */
-@keyframes userareaout{
-    0% {width: 0; background-color: var(--background-tertiary); box-shadow: none }
-    80% {width: 0; background-color: var(--background-primary); box-shadow: none }
-    100% {width: 240px; background-color: var(--background-primary)}
-}
-
 
 /* Hover to channelname and sidebar to hide pill*/
 [class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover [class*="modeUnread-"]::after {
@@ -271,114 +217,3 @@
     animation-duration: 0.4s;
     background-color: rgba(0, 0, 0, 0.3);
 } 
-
-
-/* BD MINIMAL */
-
-.bd-minimal [class*="wrapper-"][class*="guilds-"][aria-label] {
-    z-index: 50; 
-    margin-bottom: 55px;
-}
-
-.bd-minimal [class*="base-"] [class*="panels-"] {
-    left: 55px;
-    height: 55px;
-    margin-left: -55px;
-    padding-left: 55px;
-}
-
-.bd-minimal [class*="base-"] [class*="panels-"] > [class*="container-"] {
-    height: 55px;
-}
-
-.bd-minimal [class*="base-"] [class*="panels-"] [class*="avatarWrapper-"] {
-    position: fixed;
-    left: 10px;
-    bottom: 10px;    
-    width: 35px;
-    height: 35px;
-}
-
-.bd-minimal [class*="base-"] [class*="panels-"] [class*="wrapper-"][style*="32px"] {
-    width: 35px !important;
-    height: 35px !important;
-}
-
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="container-"], 
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]{
-    left: -200px;
-    top: 22px;
-    width: 200px;
-}
-
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover,
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]:hover {
-    left: 55px;
-}
-
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover::after,
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]:hover::after {
-    left: 55px;
-    width: 200px;
-}
-
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="container-"]::before,
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]::before {
-    left: 55px;
-    top: 22px;
-    width: 200px;
-    height: 40px;
-}
-
-.bd-minimal [class*="base-"] [class*="sidebar-"] [class*="modeUnread-"]::after {
-    left: 55px;
-    top: 38px;
-}
-
-.bd-minimal [class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] [class*="modeUnread-"]::after {
-    top: 74px;
-}
-
-.bd-minimal [class*="base-"] [class*="panels-"] [class*="noWrap-"] {
-    opacity: 100;
-    pointer-events: all;
-}
-
-.bd-minimal [class*="base-"] [class*="panels-"] > [class*="wrapper-"] {
-    bottom: 55;
-}
-
-.bd-minimal [class*="base-"] [class*="panels-"] > [class*="wrapper-"]:empty {
-    height: 55px;
-}
-
-
-.bd-minimal [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"] {
-    height: 89px;
-    bottom: 55px;
-}
-
-.bd-minimal [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:empty {
-    height: 55px;
-    bottom: 55px;
-}
-
-
-.bd-minimal [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]::before {
-    width: 240px;
-    height: 162px;
-    left: 55px;
-}
-
-.bd-minimal [class*="base-"] [class*="panels-"]:hover > [class*="wrapper-"]:empty::before {
-    width: 240px;
-    height: 55px;
-    left: 55px;
-}
-
-.bd-minimal [class*="sidebar-"] > [class*="container-"] {
-    background-repeat: no-repeat;
-    background-image: linear-gradient(var(--background-primary),   var(--background-primary)  ), 
-                      linear-gradient(var(--background-secondary), var(--background-secondary));
-    background-size: 100% 40px, 100%;
-}
