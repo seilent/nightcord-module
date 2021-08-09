@@ -167,6 +167,16 @@
     transition: transform 100ms ease-out 350ms;
 }
 
+/* Mask for sidebar */
+[class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover::after,
+[class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]:hover::after {
+    content: "";
+    position: fixed;
+    left: 72px;
+    top: 22px;
+    width: 240px;
+    height: 100%;
+}
 
 /* Move the mask, pill, and channel down when streamer mode is enabled */
 [class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] > [class*="container-"],
