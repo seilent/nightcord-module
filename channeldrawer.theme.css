@@ -1,7 +1,7 @@
 /**
  * @name Channel Drawer
  * @author Seilent
- * @version 1.2.3
+ * @version 1.2.5
  * @description Changed the channel into drawer to save horizontal space
  * @source https://github.com/seilent/nightcord-module
 **/
@@ -10,11 +10,12 @@
  * Changed some "fixed" into "relative"
  */
 
-:root {
-    --sv-w: 72px;
-    --av-s: 48px;
-    --wi-s: 240px;
-    --tt-b: 22px; /*web dicord user set this to 0*/
+ :root {
+    --sv-w: 72px;  /*server panel width*/
+    --av-s: 48px;  /*avatar size*/
+    --wi-s: 240px; /*sidebar width*/
+    --tt-b: 22px;  /*web dicord user set this to 0*/
+    --tt-h: 48px;  /*titlebar height*/
 }
 
 /* z-index */
@@ -126,7 +127,7 @@
     position: fixed;
     margin-left: var(--wi-s);
     width: var(--wi-s);
-    height: 48px;
+    height: var(--tt-h);
     transition-delay: 300ms;
 }
 
@@ -212,6 +213,7 @@
     --sv-w: 55px;
     --av-s: 35px;
     --wi-s: 200px;
+    --tt-h: 40px;
 }
 
 .bd-minimal [class*="base-"] section[class*="panels-"] [class*="noWrap-"]{
@@ -223,11 +225,6 @@
 .bd-minimal [class*="base-"] [class*="sidebar-"] [class*="modeUnread-"] [class*="mentionsBadge-"]::after,
 .bd-minimal [class*="base-"] [class*="sidebar-"] [class*="modeUnread-"]::after {
     top: calc(var(--tt-b) + 16px);
-}
-
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="container-"]::before,
-.bd-minimal [class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]::before {
-    height: 40px;
 }
 
 .bd-minimal [class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] [class*="modeUnread-"] [class*="mentionsBadge-"]::after,
