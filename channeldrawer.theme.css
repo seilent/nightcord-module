@@ -1,7 +1,7 @@
 /**
  * @name Channel Drawer
  * @author Seilent
- * @version 1.2.0
+ * @version 1.2.1
  * @description Changed the channel into drawer to save horizontal space
  * @source https://github.com/seilent/nightcord-module
 **/
@@ -9,6 +9,9 @@
 /* 1.2.0
  * Added variables
  * BD Minimal
+ *
+ * 1.2.1
+ * Red pill for mention
  */
 
  :root {
@@ -130,7 +133,8 @@
 }
 
 /* Hover to channelname and sidebar to hide pill*/
-[class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover [class*="modeUnread-"]::after {
+[class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover [class*="modeUnread-"]::after,
+[class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover [class*="modeUnread-"] [class*="mentionsBadge-"]::after {
     transform: scale(0);
     transition: transform 100ms;
 }
@@ -173,6 +177,19 @@
     transition: transform 100ms ease-out 350ms;
 }
 
+[class*="base-"] [class*="sidebar-"]  [class*="modeUnread-"] [class*="mentionsBadge-"]::after {
+    z-index: 60;
+    content: ""; 
+    position: fixed;
+    left: var(--sv-w);
+    top: 41.5px;
+    width: 5px;
+    height: 8px;
+    border-radius: 0 4px 4px 0;
+    background-color: hsl(359, calc(var(--saturation-factor, 1) * 82.6%), 59.4%);
+    transition: transform 100ms ease-out 350ms;
+}
+
 /* Mask for sidebar */
 [class*="base-"] [class*="sidebar-"] > [class*="container-"]:hover::after,
 [class*="base-"] [class*="sidebar-"] > [class*="privateChannels-"]:hover::after {
@@ -191,6 +208,7 @@
     top: 58px;
 }
 
+[class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] [class*="modeUnread-"] [class*="mentionsBadge-"]::after,
 [class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] [class*="modeUnread-"]::after {
     top: 78px;
 }
@@ -237,6 +255,7 @@
     background-size: 100% 40px, 100%;
 }
 
+.bd-minimal [class*="base-"] [class*="sidebar-"] [class*="modeUnread-"] [class*="mentionsBadge-"]::after,
 .bd-minimal [class*="base-"] [class*="sidebar-"] [class*="modeUnread-"]::after {
     top: 38px;
 }
@@ -246,6 +265,7 @@
     height: 40px;
 }
 
+.bd-minimal [class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] [class*="modeUnread-"] [class*="mentionsBadge-"]::after,
 .bd-minimal [class*="notice-"][class*="colorStreamerMode-"] + [class*="content-"] > [class*="sidebar-"] [class*="modeUnread-"]::after {
     top: 74px;
 }
