@@ -2,8 +2,8 @@
  * @name Channel Drawer
  * @author Seilent
  * @version 1.2.5
- * @description Changed the channel into drawer to save horizontal space
- * @source https://github.com/seilent/nightcord-module
+ * @description Change the channel into drawer to save horizontal space
+ * @source https://github.com/seilent/nc-channel-drawer
 **/
 
 /* 1.2.5
@@ -56,6 +56,7 @@
     padding-left: var(--sv-w);
     margin-bottom: -1px;
     background-color: var(--background-tertiary);
+    transition: width .2s, background-color 0.3s;
 }
 
 [class*="base-"] section[class*="panels-"] > [class*="container-"] {
